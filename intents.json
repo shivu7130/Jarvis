@@ -1,0 +1,44 @@
+{"intents": 
+[
+    {"tag": "greeting",
+     "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day","wake up"],
+     "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"]
+    },
+    {"tag": "bye",
+     "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+     "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."] 
+    },
+    {"tag": "goodbye",
+     "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+     "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."]
+    },
+    {"tag": "thanks",
+     "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+     "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {"tag": "noanswer",
+     "patterns": [],
+     "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"]
+    },
+    {"tag": "time",
+     "patterns": ["what is the time","can you tell me time","what's the time right now","tell me exact time"],
+     "responses": ["time"]
+    },
+    {"tag": "date",
+     "patterns": ["what is the date","date","what is date today","can you tell me date"],
+     "responses": ["date"]
+    },
+    {"tag": "day",
+     "patterns": ["what is the day","can you tell me day","what's the day","today"],
+     "responses": ["day"]
+    },
+    {"tag": "wikipedia",
+     "patterns": ["who is","about","what is","wikipedia","tell me about"],
+     "responses": ["wikipedia"]
+    },
+    {"tag": "google",
+     "patterns": ["google search","google","search","tell me about"],
+     "responses": ["google"]
+    }     
+]
+}

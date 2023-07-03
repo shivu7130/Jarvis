@@ -6,7 +6,15 @@ import torch
 from Brain import NeuralNet
 from NeuralNetwork import bag_of_words, tokenize
 from Task import InputExecution, NonInputExecution
+from security import security
+import pyfirmata
+import time
+board = pyfirmata.Arduino('COM3')
 
+it = pyfirmata.util.Iterator(board)
+it.start()
+
+board.digital[10].mode = pyfirmata.INPUT
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('intents.json','r') as json_data:
     intents = json.load(json_data)
@@ -35,9 +43,18 @@ from Task import InputExecution, NonInputExecution
 def Main():
     sentence = listen()
     result = str(sentence)
+    sw = board.digital[10].read()
+    if sw is True:
+            board.digital[13].write(1)
+            security()
+    else:
+         board.digital[13].write(0)
+         time.sleep(0.1)
 
-    if sentence == "bye":
-        exit()
+
+
+    #if sentence == "bye":
+        #exit()
 
     sentence = tokenize(sentence)
     X = bag_of_words(sentence, all_words)
@@ -64,12 +81,21 @@ def Main():
                     NonInputExecution(reply)
                 elif "day" in reply:
                     NonInputExecution(reply)
-                elif "wikipedia" in reply:
-                    InputExecution(reply,result)
+                
                 elif "google" in reply:
                     InputExecution(reply,result)
                 else:
                     say(reply)
 
 while True:
-    Main()
+        Main()
+       # sw = board.digital[10].read()
+        ##if sw is True:
+          #  board.digital[13].write(1)
+           # security()
+        #else:
+         #board.digital[13].write(0)
+        #time.sleep(0.1)
+
+
+   
